@@ -26,10 +26,11 @@ class TimeSeries():
     
     def __str__(self):
         print('TimeSeries Object')
-
+ 
 
     def read_data( self, skiprows=0) -> pd.DataFrame:
         '''
+        
         detect raw data from filepath or series as supplied in constructor
         '''
         if type(self.fp) == str:
