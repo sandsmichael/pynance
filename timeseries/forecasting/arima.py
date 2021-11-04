@@ -15,6 +15,9 @@ from matplotlib import pyplot
 from timeseries import TimeSeries 
 
 class Arima(TimeSeries):
+    '''
+    Auto Regressive Integrated Moving Average
+    '''
 
     def __int__(self, fp:str=None):
         super(self).__init__(fp)
