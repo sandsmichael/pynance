@@ -13,14 +13,22 @@ df = pd.read_csv(fp_stock).dropna().iloc[:500]
 
 '''  '''
 
-
+# Ex. Arima Model
 #Arima(fp= fp_stock).Arima().evaluate()
-
-
 #Arima(series = series).evaluate_models(p_values=[0, 1, 2, 4, 6, 8, 10], d_values=range(0, 3), q_values=range(0, 3))
 
-df['Close'] = pd.to_datetime(df['Close'])
-df = df.set_index('Date', inplace = True)
+# Ex. Data setup
+df['Date'] = pd.to_datetime(df['Date'])
+df.set_index('Date', inplace = True)
+
+# Ex. interpolate missing values 
+df.iloc[3] = np.nan
+print(df.head())
 ts = TimeSeries(df=df)
-ts.interpolate_na(col_name = 'Close') # no calling method poperly
-#smoothing(data = df, col_name ='Close')
+ts.interpolate_na(col_name = 'Close') # TODO not calling method poperly if at all
+
+
+# Ex. Smoothing
+print(df.head())
+ts.smoothing(data = df, col_name ='Close')
+# ts.check_stationarity()

@@ -4,7 +4,6 @@ import sys,os
 from pandas import datetime
 from pandas import read_csv
 from pandas import DataFrame
-from statsmodels.tsa.arima.model import ARIMA
 from matplotlib import pyplot
 import pandas as pd 
 import numpy as np 
@@ -42,6 +41,7 @@ class TimeSeries():
             data = self.series # returns pd.series
         elif isinstance(self.df, pd.DataFrame):
             data = self.df # returns pd.series
+            print('Passed a DataFrame')
         else:
             sys.exit()
             print('No File Input Data Supplied')
@@ -55,9 +55,8 @@ class TimeSeries():
         pass dataframe with column name for datetime index
         TODO
         '''
-        print('interp')
         self.data[col_name] = self.data[col_name].interpolate(method, axis = 0) #linear or time
-        print(self.data)
+        print(self.data.head())
         return self
 
     def smoothing(self, data, col_name=None,):

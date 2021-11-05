@@ -3,7 +3,6 @@ import warnings
 from math import sqrt
 import pandas as pd
 from pandas import read_csv
-from pandas import datetime
 from statsmodels.tsa.arima.model import ARIMA as _ARIMA
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import mean_squared_error
