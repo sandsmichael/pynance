@@ -19,7 +19,8 @@ df = pd.read_csv(fp_stock).dropna().iloc[:500]
 
 #Arima(series = series).evaluate_models(p_values=[0, 1, 2, 4, 6, 8, 10], d_values=range(0, 3), q_values=range(0, 3))
 
-
-
+df['Close'] = pd.to_datetime(df['Close'])
+df = df.set_index('Date', inplace = True)
 ts = TimeSeries(df=df)
-ts.interpolate_na(col_name ='Close', ix_name = 'Date').smoothing(data = df, col_name ='Close')
+ts.interpolate_na(col_name = 'Close') # no calling method poperly
+#smoothing(data = df, col_name ='Close')

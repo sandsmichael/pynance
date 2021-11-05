@@ -50,14 +50,13 @@ class TimeSeries():
 
     ''' time series utility functions '''
 
-    def interpolate_na(self, col_name=None, ix_name = None, method='time'):
-        try:
-            self.data[col_name] = self.data[col_name].interpolate(method, axis = 0) #linear or time
-        except ValueError:
-            print('except')
-            self.data[ix_name] = pd.to_datetime(self.data[ix_name])
-            self.data.set_index(ix_name, inplace = True)
-            self.data[col_name] = self.data[col_name].interpolate(method, axis = 0) #linear or time
+    def interpolate_na(self, col_name=None, method='time'):
+        '''
+        pass dataframe with column name for datetime index
+        TODO
+        '''
+        print('interp')
+        self.data[col_name] = self.data[col_name].interpolate(method, axis = 0) #linear or time
         print(self.data)
         return self
 
