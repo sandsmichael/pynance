@@ -9,9 +9,11 @@ import pandas as pd
 import numpy as np 
 import matplotlib.pyplot as plt
 import seaborn as sns 
+
 '''
 https://machinelearningmastery.com/time-series-data-stationary-python/
 Machine Learning for Algorithmic Trading
+https://github.com/PacktPublishing/Machine-Learning-for-Algorithmic-Trading-Second-Edition/blob/master/09_time_series_models/01_tsa_and_stationarity.ipynb
 '''
 
 
@@ -95,3 +97,56 @@ class TimeSeries():
         self.data[col_name] = self.data[col_name].interpolate(method, axis = 0) #linear or time
         print(self.data.head())
         return self
+    
+
+    # TODO...
+    def plot_series():
+        with sns.axes_style('dark'):
+            fig, axes = plt.subplots(nrows=3, ncols=2, figsize=(14, 8))
+
+            nasdaq.plot(ax=axes[0][0],
+                        title='NASDAQ  Composite Index')
+            axes[0][0].text(x=.03,
+                            y=.85,
+                            s=f'ADF: {tsa.adfuller(nasdaq.dropna())[1]:.4f}',
+                            transform=axes[0][0].transAxes)
+            axes[0][0].set_ylabel('Index')
+
+            nasdaq_log.plot(ax=axes[1][0],
+                            sharex=axes[0][0])
+            axes[1][0].text(x=.03, y=.85,
+                            s=f'ADFl: {tsa.adfuller(nasdaq_log.dropna())[1]:.4f}',
+                            transform=axes[1][0].transAxes)
+            axes[1][0].set_ylabel('Log')
+
+            nasdaq_log_diff.plot(ax=axes[2][0],
+                                sharex=axes[0][0])
+            axes[2][0].text(x=.03, y=.85,
+                            s=f'ADF: {tsa.adfuller(nasdaq_log_diff.dropna())[1]:.4f}',
+                            transform=axes[2][0].transAxes)
+            axes[2][0].set_ylabel('Log, Diff')
+
+            industrial_production.plot(ax=axes[0][1],
+                                    title='Industrial Production: Manufacturing')
+            axes[0][1].text(x=.03, y=.85,
+                            s=f'ADF: {tsa.adfuller(industrial_production)[1]:.4f}',
+                            transform=axes[0][1].transAxes)
+            axes[0][1].set_ylabel('Index')
+
+            industrial_production_log.plot(ax=axes[1][1],
+                                        sharex=axes[0][1])
+            axes[1][1].text(x=.03, y=.85,
+                            s=f'ADF: {tsa.adfuller(industrial_production_log.dropna())[1]:.4f}',
+                            transform=axes[1][1].transAxes)
+            axes[1][1].set_ylabel('Log')
+
+            industrial_production_log_diff.plot(ax=axes[2][1],
+                                                sharex=axes[0][1])
+            axes[2][1].text(x=.83, y=.85,
+                            s=f'ADF: {tsa.adfuller(industrial_production_log_diff.dropna())[1]:.4f}',
+                            transform=axes[2][1].transAxes)
+            axes[2][1].set_ylabel('Log, Seasonal Diff')
+            sns.despine()
+            fig.tight_layout()
+            fig.align_ylabels(axes)
+            
