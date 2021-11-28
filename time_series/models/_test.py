@@ -22,13 +22,10 @@ df['Date'] = pd.to_datetime(df['Date'])
 df.set_index('Date', inplace = True)
 
 # Ex. interpolate missing values 
-df.iloc[3] = np.nan
-print(df.head())
+# df.iloc[3] = np.nan
+# print(df.head())
+
 ts = TimeSeries(df=df)
-ts.interpolate_na(col_name = 'Close') # TODO not calling method poperly if at all
-
-
-# Ex. Smoothing
-print(df.head())
-ts.smoothing(data = df, col_name ='Close')
+ts.interpolate_na(col_name = 'Close') 
+# ts.decomposition(data = df, col_name ='Close', plot = True)
 # ts.check_stationarity()
