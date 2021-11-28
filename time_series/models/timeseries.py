@@ -7,7 +7,8 @@ from pandas import DataFrame
 from matplotlib import pyplot
 import pandas as pd 
 import numpy as np 
-
+import matplotlib.pyplot as plt
+import seaborn as sns 
 '''
 https://machinelearningmastery.com/time-series-data-stationary-python/
 Machine Learning for Algorithmic Trading
@@ -56,8 +57,7 @@ class TimeSeries():
         components = seasonal_decompose(data[col_name], model='additive', freq=30) # freq is required else error thrown
 
         if plot == True:
-            import matplotlib.pyplot as plt
-            import seaborn as sns 
+
             ts = (data[col_name].to_frame('Close')
                 .assign(Trend=components.trend)
                 .assign(Seasonality=components.seasonal)
@@ -70,30 +70,26 @@ class TimeSeries():
                 plt.subplots_adjust(top=.91);
         plt.show()
 
-
-    def check_stationarity(data=None, col_name=None,):
-        X = data[col_name].values
+    def check_stationarity(self, data=None, col_name=None,plot=True):
+        X = self.df[col_name].values
         split = round(len(X) / 2)
         X1, X2 = X[0:split], X[split:]
         mean1, mean2 = X1.mean(), X2.mean()
         var1, var2 = X1.var(), X2.var()
         print('mean1=%f, mean2=%f' % (mean1, mean2))
         print('variance1=%f, variance2=%f' % (var1, var2))
-        data[col_name].hist()
-        plt.show()
+        self.df[col_name].hist()
 
-        X = np.log(X) #log transform
-        plt.hist(X)
-        plt.show()
+        if plot == True:
+            X = np.log(X) #log transform
+            plt.hist(X)
+            plt.show()
 
-
-    def auto_correlation(data=None, col_name=None,):
+    def auto_correlation(self, data=None, col_name=None,):
         from statsmodels.graphics import tsaplots
-        # Display the autocorrelation plot of your time series
-        fig = tsaplots.plot_acf(data[col_name], lags=24)
+        fig = tsaplots.plot_acf(self.data[col_name], lags=24)
         plt.show()
-        # spurious & lagging correlation??
-        # cointegration
+
 
     def interpolate_na(self, col_name=None, method='time'):
         self.data[col_name] = self.data[col_name].interpolate(method, axis = 0) #linear or time

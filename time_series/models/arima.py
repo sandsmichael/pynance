@@ -47,7 +47,6 @@ class Arima(TimeSeries):
     '''   walk-forward validation    '''
     
     def evaluate(self):
-
         X = self.series.values
         size = int(len(X) * 0.001)
         train, test = X[0:size], X[size:len(X)]
@@ -70,13 +69,11 @@ class Arima(TimeSeries):
         pyplot.plot(test, linewidth=1, linestyle=':')
         pyplot.plot(predictions, color='red', linewidth=1, linestyle='-')
         # pyplot.ylim(30, 150)
-
         pyplot.show()
 
 
 
     ''' hyper-parameter tuning '''
-
     # evaluate an ARIMA model for a given order (p,d,q)
     def evaluate_arima_model(self, X, arima_order):
         # prepare training dataset
