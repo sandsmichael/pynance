@@ -1,17 +1,18 @@
 # portrebopaly
-portfolio rebalancing, optimization, and analysis
+*portfolio rebalancing, optimization, and analysis*
 
 data sources:
 
 * yfinance                          |   https://github.com/ranaroussi/yfinance
 * Sharadar Core US Equities Bundle  |   https://data.nasdaq.com/databases/SFA/data  |   nasdaq data link (quandl)
+</br>
 
-*collection* --> aws ec2 | lambda functions --> daily pulls from above vendors
-*storage* --> aws rds postgreesql 
+*collection* --> aws ec2 | lambda functions --> daily pulls from above vendors  </br>
+*storage* --> aws rds postgreesql  </br></br>
 
 
 
-portrebopaly/
+<strong>portrebopaly/</strong>
 
 
 model/
