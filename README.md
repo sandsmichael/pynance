@@ -6,6 +6,12 @@ data sources:
 * yfinance                          |   https://github.com/ranaroussi/yfinance
 * Sharadar Core US Equities Bundle  |   https://data.nasdaq.com/databases/SFA/data  |   nasdaq data link (quandl)
 
+*collection* --> aws ec2 | lambda functions --> daily pulls from above vendors
+*storage* --> aws rds postgreesql 
+
+
+
+portrebopaly/
 
 
 model/
@@ -43,6 +49,33 @@ model/
     options/
         implied volitilities & put to call spreads
 
+    screens/
+
+
+
+
+view/
+
+    gui/
+
+        interface has three "starting points"
+
+        1. Single Stock Analysis
+            * workflows
+            * technicals and fundamentals
+            * sec filing nlp
+            * dcf
+        2. Portfolio Analysis
+            * optimization
+            * rebalance
+        3. Market/Sector Analysis
+            * screens
+            * backtests
+
+
+
+
+controller/
 
 
 
@@ -51,5 +84,3 @@ model/
 
 
 
-
-*Note: Some of the code included in model/ directory is from open source projects written by other developers. references are included.
