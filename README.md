@@ -59,17 +59,21 @@ view/
 
     gui/
 
-        interface has three "starting points"
+        interface has four "starting points"
 
-        1. Single Stock Analysis
+        1. Single Stock Analysis    [Security]
             * workflows
-            * technicals and fundamentals
+            * technicals
+            * fundamentals
             * sec filing nlp
             * dcf
-        2. Portfolio Analysis
+        2. Portfolio Analysis   [Portfolio]
             * optimization
             * rebalance
-        3. Market/Sector Analysis
+        3. Market [Market]
+            * screens
+            * backtests
+        4. Sector [Sector]
             * screens
             * backtests
 
